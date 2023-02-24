@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radioBtn__group {
+  display: flex;
+  column-gap: 40px;
+  margin-right: 52px;
+}
+
+.btn__group {
+  display: flex;
+  column-gap: 12px;
+  margin-right: 80px;
+}
+
+.container__array {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+  margin: 48px auto 0;
+  height: 342px;
+  overflow: hidden;
+}
