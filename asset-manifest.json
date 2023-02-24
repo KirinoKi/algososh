@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/algososh/static/css/main.9c2d7a05.css",
+    "main.js": "/algososh/static/js/main.a2df7aca.js",
+    "static/js/787.0d1937ff.chunk.js": "/algososh/static/js/787.0d1937ff.chunk.js",
+    "static/media/bg.jpg": "/algososh/static/media/bg.971318c52485d1963a30.jpg",
+    "static/media/arr-hover.svg": "/algososh/static/media/arr-hover.c88daaa6ec07940c5321.svg",
+    "static/media/arr.svg": "/algososh/static/media/arr.8f30ddad103cd5de5ae0.svg",
+    "static/media/fibonacci-hover.svg": "/algososh/static/media/fibonacci-hover.3e475faa9d2822ecf277.svg",
+    "static/media/fibonacci.svg": "/algososh/static/media/fibonacci.192f1cd31c81eeddf840.svg",
+    "static/media/list-hover.svg": "/algososh/static/media/list-hover.607ab5f3e2b23ed1b0a4.svg",
+    "static/media/list.svg": "/algososh/static/media/list.11f0e61a09e5b451232f.svg",
+    "static/media/queue-hover.svg": "/algososh/static/media/queue-hover.ec5432ce943e19021bb8.svg",
+    "static/media/queue.svg": "/algososh/static/media/queue.0c0c6c9298bf0b4e7d01.svg",
+    "static/media/stack-hover.svg": "/algososh/static/media/stack-hover.3a6bea513a00703b6471.svg",
+    "static/media/stack.svg": "/algososh/static/media/stack.e4cda485bf4ea165aa03.svg",
+    "static/media/string-hover.svg": "/algososh/static/media/string-hover.c4ab0e41289fb4d4082b.svg",
+    "static/media/string.svg": "/algososh/static/media/string.9f87379531024a19c5ab.svg",
+    "index.html": "/algososh/index.html",
+    "static/media/loader.svg": "/algososh/static/media/loader.d0d62d626ddedc73faadc7217e90101e.svg",
+    "main.9c2d7a05.css.map": "/algososh/static/css/main.9c2d7a05.css.map",
+    "main.a2df7aca.js.map": "/algososh/static/js/main.a2df7aca.js.map",
+    "787.0d1937ff.chunk.js.map": "/algososh/static/js/787.0d1937ff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9c2d7a05.css",
+    "static/js/main.a2df7aca.js"
+  ]
+}
