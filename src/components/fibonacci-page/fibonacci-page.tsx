@@ -32,7 +32,9 @@ export const FibonacciPage: React.FC = () => {
           onChange={handlerChangeInput}
           placeholder="Введите число"
           max={19}
+          min={1}
           type={"number"}
+          value={input}
           isLimitText
         />
         <Button

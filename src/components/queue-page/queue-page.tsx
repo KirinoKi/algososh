@@ -29,6 +29,8 @@ export const QueuePage: React.FC = () => {
   const [addBtn, setAddBtn] = useState<boolean>(true);
   const [clearBtn, setClearBtn] = useState<boolean>(false);
 
+  const [loader, setLoader] = React.useState({ add: false, delete: false, remove: false });
+
   useEffect(() => {
     !input ? setAddBtn(true) : setAddBtn(false);
     if (queue.isFull()) {
@@ -50,6 +52,7 @@ export const QueuePage: React.FC = () => {
 
   const handlerAddItem = async () => {
     queue.enqueue(input);
+    setLoader({ ...loader, add: true });
     queueArray[queue.getHead()].head = true;
     if (queue.getTail() > 0) {
       queueArray[queue.getTail() - 1].tail = false;
@@ -62,22 +65,24 @@ export const QueuePage: React.FC = () => {
     await delay(SHORT_DELAY_IN_MS);
     queueArray[queue.getTail()].state = ElementStates.Default;
     setQueueArray([...queueArray]);
+    setLoader({ ...loader, add: false });
   };
 
   const handlerRemoveItem = async () => {
     if (queue.getHead() === queue.getTail()) {
+      setLoader({ ...loader, delete: true });
       queueArray[queue.getHead()].state = ElementStates.Changing;
       setQueueArray([...queueArray]);
-
       await delay(SHORT_DELAY_IN_MS);
       queueArray[queue.getHead()].state = ElementStates.Default;
 
       handlerClearQueue();
+      setLoader({ ...loader, delete: false });
     } else {
+      setLoader({ ...loader, delete: true });
       setQueueArray([...queueArray]);
       queue.dequeue();
       queueArray[queue.getHead() - 1].state = ElementStates.Changing;
-
       await delay(SHORT_DELAY_IN_MS);
 
       queueArray[queue.getHead() - 1].state = ElementStates.Default;
@@ -88,13 +93,17 @@ export const QueuePage: React.FC = () => {
       }
       queueArray[queue.getHead()].head = true;
       setQueueArray([...queueArray]);
+      setLoader({ ...loader, delete: false });
     }
   };
 
-  const handlerClearQueue = () => {
+  const handlerClearQueue = async () => {
     queue.clear();
+    setLoader({ ...loader, remove: true });
     setQueueArray([...initArr]);
     setInput("");
+    await delay(SHORT_DELAY_IN_MS);
+    setLoader({ ...loader, remove: false });
   };
 
   return (
@@ -113,17 +122,20 @@ export const QueuePage: React.FC = () => {
             onClick={handlerAddItem}
             text={"Добавить"}
             disabled={addBtn}
+            isLoader={loader.add}
           />
           <Button
             onClick={handlerRemoveItem}
             text={"Удалить"}
             disabled={clearBtn}
+            isLoader={loader.delete}
           />
         </div>
         <Button
           onClick={handlerClearQueue}
           text={"Очистить"}
           disabled={clearBtn}
+          isLoader={loader.remove}
         />
       </div>
       <div className={style.container__circle}>
