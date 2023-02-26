@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  gap: 12px;
+  max-width: 522px;
+  margin: 0 auto;
+}
+
+.container__circle {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  column-gap: 16px;
+  row-gap: 48px;
+  justify-content: center;
+  margin: 120px auto 0;
+}
