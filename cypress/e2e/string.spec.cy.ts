@@ -6,31 +6,32 @@ describe("Recursion page health check", function () {
   const colorDefault = "rgb(0, 50, 255)";
   const colorChanging = "rgb(210, 82, 225)";
   const colorModified = "rgb(127, 224, 81)";
-  const inputReverse = '[data-cy="input-reverse"]';
-  const btnReverse = '[data-cy="btn-reverse"]';
+
+  const input = '[data-cy="input-reverse"]';
+  const btn = '[data-cy="btn-reverse"]'
 
   it("Recursion page must be available", function () {
     cy.visit("/recursion");
   });
 
   it("Checking if the input is empty, then the add button is not available", function () {
-    cy.get(inputReverse).clear().should("have.value", "");
-    cy.get(btnReverse).should("have.attr", "disabled");
+    cy.get(input).clear().should("have.value", "");
+    cy.get(btn).should("have.attr", "disabled");
   });
 
   it("Checking if the input is not empty, then the add button is available", function () {
-    cy.get(inputReverse)
+    cy.get(input)
       .type("Test")
       .should("have.value", "Test");
-    cy.get(btnReverse).should("not.have.attr", "disabled");
-    cy.get(inputReverse).clear().should("have.value", "");
+    cy.get(btn).should("not.have.attr", "disabled");
+    cy.get(input).clear().should("have.value", "");
   });
 
   it("Checking if the string is reversed correctly", function () {
-    cy.get(inputReverse)
+    cy.get(input)
       .type("string")
       .should("have.value", "string");
-    cy.get(btnReverse).as("btn");
+    cy.get(btn).as("btn");
     cy.get("@btn").should("not.have.attr", "disabled");
     cy.get("[class^=circle_circle]").as("circles");
 
