@@ -6,35 +6,40 @@ describe("Stack page health check", function () {
   const colorDefault = "rgb(0, 50, 255)";
   const colorChanging = "rgb(210, 82, 225)";
   const outArray = [5, 4, 1, 0];
+  const inputStack = '[data-cy="input-stack"]';
+  const addStack = '[data-cy="btn-add-stack"]';
+  const removeStack = '[data-cy="btn-remove-stack"]';
+  const clearStack = '[data-cy="btn-clear-stack"]';
+  const cicrleContent = "[class^=circle_content]";
 
   it("Stack page must be available", function () {
     cy.visit("/stack");
   });
 
   it("Checking if the input is empty, then the add button is not available", function () {
-    cy.get('[data-cy="input-stack"]').clear().should("have.value", "");
-    cy.get('[data-cy="btn-add-stack"]').should("have.attr", "disabled");
-    cy.get('[data-cy="btn-remove-stack"]').should("have.attr", "disabled");
-    cy.get('[data-cy="btn-clear-stack"]').should("have.attr", "disabled");
+    cy.get(inputStack).clear().should("have.value", "");
+    cy.get(addStack).should("have.attr", "disabled");
+    cy.get(removeStack).should("have.attr", "disabled");
+    cy.get(clearStack).should("have.attr", "disabled");
   });
 
   it("Checking if the input is not empty, then the add button is available", function () {
-    cy.get('[data-cy="input-stack"]').type("5").should("have.value", "5");
-    cy.get('[data-cy="btn-add-stack"]').should("not.have.attr", "disabled");
-    cy.get('[data-cy="btn-remove-stack"]').should("have.attr", "disabled");
-    cy.get('[data-cy="btn-clear-stack"]').should("have.attr", "disabled");
-    cy.get('[data-cy="input-stack"]').clear().should("have.value", "");
-    cy.get('[data-cy="btn-add-stack"]').should("have.attr", "disabled");
+    cy.get(inputStack).type("5").should("have.value", "5");
+    cy.get(addStack).should("not.have.attr", "disabled");
+    cy.get(removeStack).should("have.attr", "disabled");
+    cy.get(clearStack).should("have.attr", "disabled");
+    cy.get(inputStack).clear().should("have.value", "");
+    cy.get(addStack).should("have.attr", "disabled");
   });
 
   it("Checking whether an element has been added to the stack correctly", function () {
-    cy.get('[data-cy="btn-add-stack"]').as("btn-add");
+    cy.get(addStack).as("btn-add");
 
-    cy.get('[data-cy="input-stack"]').type("5").should("have.value", "5");
+    cy.get(inputStack).type("5").should("have.value", "5");
     cy.get("@btn-add").should("not.have.attr", "disabled");
     cy.get("@btn-add").click();
 
-    cy.get("[class^=circle_content]").as("circles");
+    cy.get(cicrleContent).as("circles");
     cy.get("@circles")
       .should("have.length", 1)
       .each((circle, index) => {
@@ -42,9 +47,9 @@ describe("Stack page health check", function () {
         cy.checkStyles(circle, outArray[index], colorChanging);
       });
     cy.wait(SHORT_DELAY_IN_MS);
-    cy.get('[data-cy="btn-remove-stack"]').should("not.have.attr", "disabled");
-    cy.get('[data-cy="btn-clear-stack"]').should("not.have.attr", "disabled");
-    cy.get('[data-cy="input-stack"]').type("4").should("have.value", "4");
+    cy.get(removeStack).should("not.have.attr", "disabled");
+    cy.get(clearStack).should("not.have.attr", "disabled");
+    cy.get(inputStack).type("4").should("have.value", "4");
     cy.get("@btn-add").click();
     cy.get("@circles")
       .should("have.length", 1)
@@ -57,11 +62,11 @@ describe("Stack page health check", function () {
       });
     cy.wait(SHORT_DELAY_IN_MS);
 
-    cy.get('[data-cy="input-stack"]').type("1").should("have.value", "1");
+    cy.get(inputStack).type("1").should("have.value", "1");
     cy.get("@btn-add").click();
     cy.wait(SHORT_DELAY_IN_MS);
 
-    cy.get('[data-cy="input-stack"]').type("0").should("have.value", "0");
+    cy.get(inputStack).type("0").should("have.value", "0");
     cy.get("@btn-add").click();
     cy.wait(SHORT_DELAY_IN_MS);
 
@@ -74,8 +79,8 @@ describe("Stack page health check", function () {
   });
 
   it("Checking whether an element has been removed from the stack correctly", function () {
-    cy.get('[data-cy="btn-remove-stack"]').as("btn-remove");
-    cy.get("[class^=circle_content]").as("circles");
+    cy.get(removeStack).as("btn-remove");
+    cy.get(cicrleContent).as("circles");
 
     cy.get("@btn-remove").click();
     cy.get("@circles")
@@ -119,15 +124,15 @@ describe("Stack page health check", function () {
   });
 
   it("Verifying that the stack has been cleared correctly", function () {
-    cy.get('[data-cy="btn-clear-stack"]').as("btn-clear");
-    cy.get("[class^=circle_content]").as("circles");
+    cy.get(clearStack).as("btn-clear");
+    cy.get(cicrleContent).as("circles");
 
     cy.get("@btn-clear").click();
     cy.get("@circles").should("have.length", 0);
 
-    cy.get('[data-cy="input-stack"]').should("have.value", "");
-    cy.get('[data-cy="btn-add-stack"]').should("have.attr", "disabled");
-    cy.get('[data-cy="btn-remove-stack"]').should("have.attr", "disabled");
+    cy.get(inputStack).should("have.value", "");
+    cy.get(addStack).should("have.attr", "disabled");
+    cy.get(removeStack).should("have.attr", "disabled");
     cy.get("@btn-clear").should("have.attr", "disabled");
   });
 });

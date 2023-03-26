@@ -276,7 +276,6 @@ describe("Queue page health check", function () {
     cy.get(btnClearQueue).as("btn-clear");
     cy.get(cicrleContent).as("circles");
     cy.get("@btn-clear").click();
-    
     cy.get("@circles")
       .should("have.length", sizeCirclersInArray)
       .each((circle, index) => {
