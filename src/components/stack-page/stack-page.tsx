@@ -82,6 +82,7 @@ export const StackPage: React.FC = () => {
             disabled={addBtn}
             isLoader={loader.add}
             data-cy="btn-add-stack"
+
           />
           <Button
             onClick={handlerRemoveItem}
@@ -89,6 +90,7 @@ export const StackPage: React.FC = () => {
             disabled={clearBtn}
             isLoader={loader.delete}
             data-cy="btn-remove-stack"
+
           />
         </div>
         <Button
@@ -97,6 +99,7 @@ export const StackPage: React.FC = () => {
           disabled={clearBtn}
           isLoader={loader.remove}
           data-cy="btn-clear-stack"
+
         />
       </div>
       <div className={style.container__circle}>

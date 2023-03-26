@@ -75,7 +75,7 @@ export const SortingPage: React.FC = () => {
             onClick={handlerChoiseMethodSort}
           />
           <RadioInput
-            label="Пузырёк"
+            label="Пузырь"
             defaultValue={SortMethod.Bubble}
             name="radio"
             disabled={disabled}

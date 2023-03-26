@@ -37,6 +37,7 @@ export const FibonacciPage: React.FC = () => {
           value={input}
           isLimitText
           data-cy="input-fibo"
+
         />
         <Button
           onClick={handlerBtnClick}

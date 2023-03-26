@@ -22,3 +22,4 @@ const calcFibo = (n: number, memo: Record<number, number> = {}): number => {
   memo[n] = calcFibo(n - 1, memo) + calcFibo(n - 2, memo);
   return memo[n];
 };
+
