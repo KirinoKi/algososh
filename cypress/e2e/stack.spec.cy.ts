@@ -1,18 +1,15 @@
 /// <reference path="../support/index.d.ts" />
 
 import { SHORT_DELAY_IN_MS } from "./../../src/constants/delays";
+import {colorDefault, colorChanging, content} from '../support/constants'
 
 describe("Stack page health check", function () {
-  const colorDefault = "rgb(0, 50, 255)";
-  const colorChanging = "rgb(210, 82, 225)";
   const outArray = [5, 4, 1, 0];
 
   const input = '[data-cy="input-stack"]';
   const add = '[data-cy="btn-add-stack"]';
   const remove = '[data-cy="btn-remove-stack"]';
   const clear = '[data-cy="btn-clear-stack"]';
-
-  const content = "[class^=circle_content]"
 
   it("Stack page must be available", function () {
     cy.visit("/stack");

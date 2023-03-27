@@ -1,9 +1,9 @@
 /// <reference path="../support/index.d.ts" />
+import {colorDefault} from '../support/constants'
 
 describe("Fibonacci page health check", function () {
-  const colorDefault = "rgb(0, 50, 255)";
   const inputFibo = '[data-cy="input-fibo"]';
-  const btnFibo = '[data-cy="btn-fibo"]'
+  const btnFibo = '[data-cy="btn-fibo"]';
 
     it("Fibonacci page must be available", function () {
       cy.visit("/fibonacci");

@@ -1,10 +1,9 @@
 /// <reference path="../support/index.d.ts" />
 
 import { SHORT_DELAY_IN_MS } from "./../../src/constants/delays";
+import {colorDefault, colorChanging, content} from '../support/constants'
 
 describe("Queue page health check", function () {
-  const colorDefault = "rgb(0, 50, 255)";
-  const colorChanging = "rgb(210, 82, 225)";
   const outArray = [5, 4, 1, 0, 6, 7, 8];
   const sizeCirclersInArray = 7;
 
@@ -13,7 +12,6 @@ describe("Queue page health check", function () {
   const remove = '[data-cy="btn-remove-queue"]';
   const clear = '[data-cy="btn-clear-queue"]';
 
-  const content = "[class^=circle_content]";
   const contentCircle = "[class*=circle_circle]";
 
   it("Queue page must be available", function () {

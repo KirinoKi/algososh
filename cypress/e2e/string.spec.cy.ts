@@ -1,11 +1,9 @@
 /// <reference path="../support/index.d.ts" />
 
 import { DELAY_IN_MS } from "./../../src/constants/delays";
+import {colorDefault, colorChanging, colorModified} from '../support/constants'
 
 describe("Recursion page health check", function () {
-  const colorDefault = "rgb(0, 50, 255)";
-  const colorChanging = "rgb(210, 82, 225)";
-  const colorModified = "rgb(127, 224, 81)";
 
   const input = '[data-cy="input-reverse"]';
   const btn = '[data-cy="btn-reverse"]'
