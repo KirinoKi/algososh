@@ -36,6 +36,7 @@ export const StringComponent: React.FC = () => {
     <SolutionLayout title="Строка">
       <div className={style.container}>
         <Input
+          data-cy="input-reverse"
           onChange={handlerChangeInput}
           placeholder="Введите текст"
           maxLength={11}
@@ -47,6 +48,7 @@ export const StringComponent: React.FC = () => {
           linkedList="small"
           isLoader={loaderBtn}
           disabled={disabled}
+          data-cy="btn-reverse"
         />
       </div>
       <div className={style.container__circle}>

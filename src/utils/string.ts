@@ -9,23 +9,25 @@ export const reverseCharsArray = async (
   start: number = 0,
   end: number = chars.length - 1
 ) => {
-  const middle = chars.length / 2;
+  const newArray: Array<TItemArray<TItem>> = JSON.parse(JSON.stringify(chars));
+  const middle = newArray.length / 2;
 
   while (start < middle) {
-    chars[start].state = ElementStates.Changing;
-    chars[end].state = ElementStates.Changing;
-    setCharsArray([...chars]);
+    newArray[start].state = ElementStates.Changing;
+    newArray[end].state = ElementStates.Changing;
+    setCharsArray([...newArray]);
 
     await delay(DELAY_IN_MS);
 
-    chars[start].state = ElementStates.Modified;
-    chars[end].state = ElementStates.Modified;
-    swap(chars, start, end);
-    setCharsArray([...chars]);
+    newArray[start].state = ElementStates.Modified;
+    newArray[end].state = ElementStates.Modified;
+    swap(newArray, start, end);
+    setCharsArray([...newArray]);
 
     await delay(DELAY_IN_MS);
 
     start++;
     end--;
   }
+  return newArray;
 };

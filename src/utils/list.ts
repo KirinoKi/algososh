@@ -177,3 +177,4 @@ export class LinkedList<T> implements ILinkedList<T> {
 
   getSize = () => this.size;
 }
+

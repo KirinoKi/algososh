@@ -11,7 +11,7 @@ import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 
 import style from "./list-page.module.css";
 
-const startArray = [0, 34, 8, 1];
+const startArray = [2, 34, 8, 1];
 const linkedList = new LinkedList<string | number>(startArray);
 
 export const ListPage: React.FC = () => {
@@ -343,6 +343,7 @@ export const ListPage: React.FC = () => {
           isLimitText
           value={inputValue}
           disabled={listArray.length > 5}
+          data-cy="input-value-list"
         />
         <Button
           extraClass={style.btn__value}
@@ -357,6 +358,7 @@ export const ListPage: React.FC = () => {
             isDisabledBtnAdd
           }
           isLoader={addHead}
+          data-cy="btn-add-head-list"
         />
         <Button
           extraClass={style.btn__value}
@@ -371,6 +373,7 @@ export const ListPage: React.FC = () => {
             isDisabledBtnAdd
           }
           isLoader={addTail}
+          data-cy="btn-add-tail-list"
         />
         <Button
           extraClass={style.btn__value}
@@ -385,6 +388,7 @@ export const ListPage: React.FC = () => {
             isDisabledBtnRemove
           }
           isLoader={removeHead}
+          data-cy="btn-remove-head-list"
         />
         <Button
           extraClass={style.btn__value}
@@ -399,6 +403,7 @@ export const ListPage: React.FC = () => {
             isDisabledBtnRemove
           }
           isLoader={removeTail}
+          data-cy="btn-remove-tail-list"
         />
       </div>
       <div className={style.container}>
@@ -409,6 +414,7 @@ export const ListPage: React.FC = () => {
           min={0}
           onChange={handlerChangeInput}
           value={inputIndex}
+          data-cy="input-index-list"
         />
         <Button
           extraClass={style.btn__index}
@@ -426,6 +432,7 @@ export const ListPage: React.FC = () => {
             +inputIndex > listArray.length - 1
           }
           isLoader={addByIndex}
+          data-cy="btn-add-byIndex-list"
         />
         <Button
           extraClass={style.btn__index}
@@ -442,6 +449,7 @@ export const ListPage: React.FC = () => {
             +inputIndex > listArray.length - 1
           }
           isLoader={removeByIndex}
+          data-cy="btn-remove-byIndex-list"
         />
       </div>
       <div className={style.container__circle}>
@@ -454,6 +462,7 @@ export const ListPage: React.FC = () => {
               head={item.head ? "head" : ""}
               tail={item.tail ? "tail" : ""}
               state={item.state}
+              data-cy="test1"
             />
             {index < listArray.length - 1 && (
               <ArrowIcon

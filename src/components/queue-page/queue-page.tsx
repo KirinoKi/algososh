@@ -117,18 +117,21 @@ export const QueuePage: React.FC = () => {
             maxLength={4}
             isLimitText
             value={input}
+            data-cy="input-queue"
           />
           <Button
             onClick={handlerAddItem}
             text={"Добавить"}
             disabled={addBtn}
             isLoader={loader.add}
+            data-cy="btn-add-queue"
           />
           <Button
             onClick={handlerRemoveItem}
             text={"Удалить"}
             disabled={clearBtn}
             isLoader={loader.delete}
+            data-cy="btn-remove-queue"
           />
         </div>
         <Button
@@ -136,6 +139,7 @@ export const QueuePage: React.FC = () => {
           text={"Очистить"}
           disabled={clearBtn}
           isLoader={loader.remove}
+          data-cy="btn-clear-queue"
         />
       </div>
       <div className={style.container__circle}>
